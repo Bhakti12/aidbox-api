@@ -52,39 +52,19 @@ export class QuestionnaireResponseRepository
     try {
       const operation: TOperation<any> = {
         method: "POST",
-        path: ["createQuestionnaire"],
+        path: ["$create-QuestionnaireResponse"],
         handlerFn: async (req, { ctx, helpers }) => {
           assert.ok(question, new ValidationError("resource required"));
           const {
-            client_name,
-            DateOfBirth,
-            Consent_to_allow_the_taking_of_pictures,
-            agree_for_pictures,
-            consent_for_communication,
-            consent_for_emails,
-            bayshore_telephone_number,
-            e_mail,
-            consent_to,
+            client_name
           } = question;
+
+          console.log("question",question);
 
           const questionnaire = await ctx.api.createResource<any>(
             "questionnaireresponse",
             {
               client_name: [{ answer: client_name }],
-              DateOfBirth: [{ answer: DateOfBirth }],
-              agree_for_pictures: [{ answer: agree_for_pictures }],
-              consent_for_communication: [
-                { answer: consent_for_communication },
-              ],
-              consent_for_emails: [{ answer: consent_for_emails }],
-              consent_to: [{ answer: consent_to }],
-              Consent_to_allow_the_taking_of_pictures: [
-                { answer: Consent_to_allow_the_taking_of_pictures },
-              ],
-              e_mail: [{ answer: e_mail }],
-              bayshore_telephone_number: [
-                { answer: bayshore_telephone_number },
-              ],
             }
           );
           console.log("question", questionnaire);

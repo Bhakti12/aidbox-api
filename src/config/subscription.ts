@@ -1,21 +1,21 @@
 import { TSubscription } from "./helpers";
 
-export const questionnaireResponse: TSubscription<any> = {
-    handler: "questionnaireResponse",
+export const QuestionnaireResponse: TSubscription<any> = {
+    handler: "QuestionnaireResponse",
     handlerFn: async (event, { ctx, helpers }) => {
-      const { resource: questionnaireResponse, previous } = event;
+      const { resource: QuestionnaireResponse, previous } = event;
       console.log('Handling subscription "question"');
-      console.log({ questionnaireResponse, previous });
+      console.log({ QuestionnaireResponse, previous });
       return { status: 500 };
     },
 };
 
-export const questionnaire: TSubscription<any> = {
-    handler: "Questionnaire",
-    handlerFn: async (event, { ctx, helpers }) => {
-      const { resource: Questionnaire, previous } = event;
-      console.log('Handling subscription "questionnaire"');
-      console.log({ Questionnaire, previous });
-      return { status: 500 };
-    },
-};
+// export const questionnaire: TSubscription<any> = {
+//     handler: "Questionnaire",
+//     handlerFn: async (event, { ctx, helpers }) => {
+//       const { resource: Questionnaire, previous } = event;
+//       console.log('Handling subscription "questionnaire"');
+//       console.log({ Questionnaire, previous });
+//       return { status: 500 };
+//     },
+// };
