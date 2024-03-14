@@ -1,0 +1,1 @@
+This directory contains the subscribers that are attached to events in the system.

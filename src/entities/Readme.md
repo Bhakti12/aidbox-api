@@ -1,0 +1,1 @@
+This directory contains the database facing models, here called the entities.

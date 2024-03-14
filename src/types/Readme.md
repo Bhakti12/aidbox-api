@@ -1,0 +1,1 @@
+This directory contains the type definitions to be used by TypeScript.

@@ -1,0 +1,1 @@
+This directory contains the business models for the application.

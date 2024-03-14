@@ -1,0 +1,1 @@
+This directory contains the utility functions and classes defined to help for better decoupling of the code.
