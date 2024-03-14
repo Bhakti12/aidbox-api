@@ -1,14 +1,7 @@
-import { Server } from 'socket.io';
 import app from './src/config/express';
 // import http from 'http';
-
 import ENV from './src/config/env';
-import { iocContainer as Container } from './src/config/container';
-import { TYPES } from './src/config/types';
-import { ILoggerService } from './src/interfaces/ILoggerService';
 import routers from '../aidbox-api/src/routes/index';
-import { createHelpers } from './src/config/helpers';
-import { createApp, createConfig } from '@aidbox/node-server-sdk';
 
 // TODO:this is temporary ,after aws implementation please remove this
 const allowlist: any[string] = ENV.ALLOW_CORS_DOMAIN;
@@ -24,9 +17,6 @@ app.get(`${ENV.API_ROOT}/static/:name`, (req, res) => {
 // create websocket connection
 // const server = http.createServer(app);
 
-// const config = createConfig();
-
-// const app = createApp(config);
 
 // Start Express server
 app.listen(3000, function () {
