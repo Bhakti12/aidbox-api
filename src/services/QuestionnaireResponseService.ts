@@ -33,13 +33,8 @@ export default class QuestionnaireResponseService implements IQuestionnaireRespo
     
     async storeQuestionnaireResponse(question: any): Promise<any> {
         try{
-            const config = createConfig();
-            const ctx = createCtx({
-                config,
-                manifest: { subscriptions, entities, apiVersion: 2 },
-            });
-            const helpers = createHelpers(ctx);
-            const app1 = createApp({ ctx, helpers }, config);
+            const operations = await this._questionRepo.storeQuestionnaireResponse(question);
+            return operations;
         }catch(err){
             console.log("err",err);
             throw new InternalServerError('An error occurred while interacting with the database');

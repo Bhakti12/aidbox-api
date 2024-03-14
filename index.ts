@@ -23,7 +23,7 @@ app.listen(3000, function () {
     console.log('server running at ', 3000);
 });
 
-app.use('/aidbox',routers.questionnareRouter);
+app.use(routers.questionnareRouter);
 
 // Start websocket server
 // const io = new Server(server, {
