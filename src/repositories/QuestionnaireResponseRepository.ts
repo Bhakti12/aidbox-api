@@ -19,7 +19,7 @@ export class QuestionnaireResponseRepository
     try {
       const operation: TOperation<any> = {
         method: "GET",
-        path: ["getQuestionnaire"],
+        path: ["$get-Questionnaire"],
         handlerFn: async (req, { ctx }) => {
           const { resources: questionnaire } = await ctx.api.findResources<any>(
             "Questionnaire"
@@ -27,16 +27,18 @@ export class QuestionnaireResponseRepository
 
           const questionn = !questionnaire.length
             ? null
-            : await ctx.api.getResource<any>("Questionnaire", questionnaire[0].id);
+            : await ctx.api.getResource<any>(
+                "Questionnaire",
+                questionnaire[0].id
+              );
 
           console.log({ questionnaire, questionn });
           return { resource: { questionnaire, questionn } };
         },
       };
-
+      console.log("operation ", operation);
       return {
         getquestionnaire: operation,
-        // Add other operations as needed
       };
     } catch (err) {
       console.log("err", err);
@@ -46,73 +48,58 @@ export class QuestionnaireResponseRepository
     }
   }
 
-  // async storeQuestionnaireResponse(question: storeFormData): Promise<
-  //   TOperation<{
-  //     // Typing "resource" (POST payload)
-  //     resource: {
-  //       client_name: string;
-  //       DateOfBirth: string;
-  //       Consent_to_allow_the_taking_of_pictures: boolean;
-  //       agree_for_pictures: string;
-  //       consent_for_communication: boolean;
-  //       consent_for_emails: boolean;
-  //       bayshore_telephone_number: string;
-  //       e_mail: string;
-  //       consent_to: boolean;
-  //     };
-  //   }>
-  // > {
-  //   try {
-  //     return {
-  //       method: "POST",
-  //       path: ["createQuestionnaireResponse"],
-  //       handlerFn: async (req, { ctx }) => {
-  //         const {
-  //           // "resource" contains POST payload
-  //           resource,
-  //         } = req;
-  //         assert.ok(resource, new ValidationError("resource required"));
-  //         const {
-  //           client_name,
-  //           DateOfBirth,
-  //           Consent_to_allow_the_taking_of_pictures,
-  //           agree_for_pictures,
-  //           consent_for_communication,
-  //           consent_for_emails,
-  //           bayshore_telephone_number,
-  //           e_mail,
-  //           consent_to,
-  //         } = resource;
+  storeQuestionnaireResponse(question: any): ManifestOperations {
+    try {
+      const operation: TOperation<any> = {
+        method: "POST",
+        path: ["createQuestionnaire"],
+        handlerFn: async (req, { ctx, helpers }) => {
+          assert.ok(question, new ValidationError("resource required"));
+          const {
+            client_name,
+            DateOfBirth,
+            Consent_to_allow_the_taking_of_pictures,
+            agree_for_pictures,
+            consent_for_communication,
+            consent_for_emails,
+            bayshore_telephone_number,
+            e_mail,
+            consent_to,
+          } = question;
 
-  //         const question = await ctx.api.createResource<any>(
-  //           "questionnaireresponse",
-  //           {
-  //             client_name: [{ answer: client_name }],
-  //             DateOfBirth: [{ answer: DateOfBirth }],
-  //             agree_for_pictures: [{ answer: agree_for_pictures }],
-  //             consent_for_communication: [
-  //               { answer: consent_for_communication },
-  //             ],
-  //             consent_for_emails: [{ answer: consent_for_emails }],
-  //             consent_to: [{ answer: consent_to }],
-  //             Consent_to_allow_the_taking_of_pictures: [
-  //               { answer: Consent_to_allow_the_taking_of_pictures },
-  //             ],
-  //             e_mail: [{ answer: e_mail }],
-  //             bayshore_telephone_number: [
-  //               { answer: bayshore_telephone_number },
-  //             ],
-  //           }
-  //         );
-  //         console.log("question", question);
-  //         return { resource: question };
-  //       },
-  //     };
-  //   } catch (err) {
-  //     console.log("err", err);
-  //     throw new InternalServerError(
-  //       "An error occurred while interacting with the database"
-  //     );
-  //   }
-  // }
+          const questionnaire = await ctx.api.createResource<any>(
+            "questionnaireresponse",
+            {
+              client_name: [{ answer: client_name }],
+              DateOfBirth: [{ answer: DateOfBirth }],
+              agree_for_pictures: [{ answer: agree_for_pictures }],
+              consent_for_communication: [
+                { answer: consent_for_communication },
+              ],
+              consent_for_emails: [{ answer: consent_for_emails }],
+              consent_to: [{ answer: consent_to }],
+              Consent_to_allow_the_taking_of_pictures: [
+                { answer: Consent_to_allow_the_taking_of_pictures },
+              ],
+              e_mail: [{ answer: e_mail }],
+              bayshore_telephone_number: [
+                { answer: bayshore_telephone_number },
+              ],
+            }
+          );
+          console.log("question", questionnaire);
+          return { resource: questionnaire };
+        },
+      };
+      console.log("operations", operation);
+      return {
+        createQuestionnaire: operation,
+      };
+    } catch (err) {
+      console.log("err", err);
+      throw new InternalServerError(
+        "An error occurred while interacting with the database"
+      );
+    }
+  }
 }
