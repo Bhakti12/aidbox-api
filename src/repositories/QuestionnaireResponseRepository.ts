@@ -17,6 +17,7 @@ export class QuestionnaireResponseRepository
 {
   getQuestionnair(): ManifestOperations {
     try {
+      let result: any;
       const operation: TOperation<any> = {
         method: "GET",
         path: ["getQuestionnaire"],
@@ -25,18 +26,18 @@ export class QuestionnaireResponseRepository
             "Questionnaire"
           );
 
-          const questionn = !questionnaire.length
+          result = !questionnaire.length
             ? null
             : await ctx.api.getResource<any>("Questionnaire", questionnaire[0].id);
 
-          console.log({ questionnaire, questionn });
-          return { resource: { questionnaire, questionn } };
+          console.log({ questionnaire });
+          return { resource: { questionnaire, result } };
         },
       };
-
+      console.log("operation from repo", operation, result);
       return {
-        getquestionnaire: operation,
-        // Add other operations as needed
+        apiDetail: operation,
+        result
       };
     } catch (err) {
       console.log("err", err);

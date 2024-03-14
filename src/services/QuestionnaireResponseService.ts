@@ -23,18 +23,7 @@ export default class QuestionnaireResponseService implements IQuestionnaireRespo
 
     async getQuestionnair(): Promise<any> {
         try{
-            // const config = createConfig();
-
-            const operations = this._questionRepo.getQuestionnair();
-            // console.log("operations",operations);
-            // const ctx = createCtx({
-            //     config,
-            //     manifest: { operations,subscriptions,apiVersion: 2 },
-            // });
-            // console.log("subscription",subscriptions);
-            // const helpers = createHelpers(ctx);
-            // // const app = createApp({ ctx, helpers, loggerEnbaled: true },config);
-            // const app1 = createApp({ ctx, helpers }, config);
+            const operations = await this._questionRepo.getQuestionnair();
             return operations;
         }catch(err){
             console.log("err",err);
