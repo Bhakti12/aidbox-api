@@ -1,7 +1,7 @@
 import { Manifest } from "@aidbox/node-server-sdk";
-import {storeFormData} from "../types/Question";
+import {storeFormData,QuestionnaireResponse} from "../types/Question";
 
 export interface IQuestionnaireResponseService{
-    getQuestionnair() : any;
-    storeQuestionnaireResponse(question: any) : Promise<any>;
+    getQuestionnair() : Promise<any>;
+    storeQuestionnaireResponse(question: QuestionnaireResponse) : Promise<any>;
 }

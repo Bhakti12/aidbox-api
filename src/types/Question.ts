@@ -9,3 +9,22 @@ export declare type storeFormData = {
     e_mail: string,
     consent_to: boolean
 };
+
+export declare type QuestionnaireResponse = {
+    resourceType: string;
+    status: string;
+    item: QuestionnaireItem[];
+};
+
+export declare type QuestionnaireItem = {
+    text: string;
+    answer: Answer[];
+    linkId: string;
+};
+
+export declare type Answer = {
+    value: {
+        string?: string;
+        boolean?: boolean;
+    };
+}

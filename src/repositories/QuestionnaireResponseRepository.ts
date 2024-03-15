@@ -1,7 +1,7 @@
 import axios from "axios";
 import { InternalServerError } from "../errors/InternalServerError";
 import { IQuestionnaireResponseRepository } from "../interfaces/IQuestionnaireResponseRepository";
-import { storeFormData } from "../types/Question";
+import { QuestionnaireResponse, storeFormData } from "../types/Question";
 import { injectable } from "inversify";
 import * as assert from "assert";
 import {
@@ -10,38 +10,30 @@ import {
   ValidationError,
 } from "@aidbox/node-server-sdk";
 import { TOperation } from "../config/helpers";
+import { config } from "../config/env";
+import { application } from "express";
 
 @injectable()
 export class QuestionnaireResponseRepository
   implements IQuestionnaireResponseRepository
 {
-  getQuestionnair(): ManifestOperations {
+  async getQuestionnair(): Promise<any> {
     try {
-      let result: any;
-      const operation: TOperation<any> = {
-        method: "GET",
-        path: ["$get-Questionnaire"],
-        handlerFn: async (req, { ctx }) => {
-          const { resources: questionnaire } = await ctx.api.findResources<any>(
-            "Questionnaire"
-          );
+      const url = `${config.AIDBOX_URL}/Questionnaire`;
+      const username = config.AIDBOX_CLIENT_ID;
+      const password = config.AIDBOX_CLIENT_SECRET;
 
-          result = !questionnaire.length
-            ? null
-            : await ctx.api.getResource<any>(
-                "Questionnaire",
-                questionnaire[0].id
-              );
-
-          console.log({ questionnaire });
-          return { resource: { questionnaire, result } };
+      console.log("url", url, username, password);
+      // Encode the credentials to Base64
+      const credentials = Buffer.from(`${username}:${password}`).toString(
+        "base64"
+      );
+      const result = await axios.get(url, {
+        headers: {
+          Authorization: `Basic ${credentials}`,
         },
-      };
-      console.log("operation from repo", operation, result);
-      return {
-        apiDetail: operation,
-        result
-      };
+      });
+      return result.data;
     } catch (err) {
       console.log("err", err);
       throw new InternalServerError(
@@ -50,35 +42,25 @@ export class QuestionnaireResponseRepository
     }
   }
 
-  storeQuestionnaireResponse(question: any): ManifestOperations {
+  async storeQuestionnaireResponse(question: QuestionnaireResponse): Promise<any> {
     try {
-      const operation: TOperation<any> = {
-        method: "POST",
-        path: ["$create-QuestionnaireResponse"],
-        handlerFn: async (req, { ctx, helpers }) => {
-          assert.ok(question, new ValidationError("resource required"));
-          const {
-            client_name
-          } = question;
+      const url = `${config.AIDBOX_URL}/QuestionnaireResponse`;
+      const username = config.AIDBOX_CLIENT_ID;
+      const password = config.AIDBOX_CLIENT_SECRET;
 
-          console.log("question",question);
+      const credentials = Buffer.from(`${username}:${password}`).toString(
+        "base64"
+      );
 
-          const questionnaire = await ctx.api.createResource<any>(
-            "questionnaireresponse",
-            {
-              client_name: [{ answer: client_name }],
-            }
-          );
-          console.log("question", questionnaire);
-          return { resource: questionnaire };
+      const result = await axios.post(url, question, {
+        headers: {
+          Authorization: `Basic ${credentials}`,
+          accept: "application/json"
         },
-      };
-      console.log("operations", operation);
-      return {
-        createQuestionnaire: operation,
-      };
+      });
+      return result.data;
     } catch (err) {
-      console.log("err", err);
+      console.log("err", err.response.data);
       throw new InternalServerError(
         "An error occurred while interacting with the database"
       );

@@ -1,11 +1,15 @@
 // import appRoot from 'app-root-path';
-import dotenv from 'dotenv';
+import * as dotenv from "dotenv";
+
+dotenv.config();
+
 
 // dotenv.config({ path: `${appRoot}/.env` });
 
-export default {
+export const config = {
     // APP_ROOT: appRoot.path,
-
+    AIDBOX_CLIENT_ID: process.env.AIDBOX_CLIENT_ID,
+    AIDBOX_CLIENT_SECRET: process.env.AIDBOX_CLIENT_SECRET,
     TOKEN_ISSUER: process.env.TOKEN_ISSUER,
     TOKEN_AUDIENCE: process.env.TOKEN_AUDIENCE,
     ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN_SECRET,
@@ -14,7 +18,7 @@ export default {
     REFRESH_TOKEN_EXPIRES_IN: process.env.REFRESH_TOKEN_EXPIRES_IN,
 
     API_ROOT: `${process.env.API_ROOT}/v${process.env.VERSION}`,
-
+    AIDBOX_URL : process.env.AIDBOX_URL,
     NODE_ENV: process.env.NODE_ENV,
 
     APP_BASE_URL: process.env.APP_BASE_URL,

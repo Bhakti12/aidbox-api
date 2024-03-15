@@ -1,11 +1,11 @@
 import app from './src/config/express';
 // import http from 'http';
-import ENV from './src/config/env';
+import {config} from './src/config/env';
 import routers from '../aidbox-api/src/routes/index';
 
 // TODO:this is temporary ,after aws implementation please remove this
-const allowlist: any[string] = ENV.ALLOW_CORS_DOMAIN;
-app.get(`${ENV.API_ROOT}/static/:name`, (req, res) => {
+const allowlist: any[string] =config.ALLOW_CORS_DOMAIN;
+app.get(`${config.API_ROOT}/static/:name`, (req, res) => {
     let domains = JSON.parse(allowlist);
     res.header('Content-Security-Policy', `frame-ancestors 'self' ${domains.join(' ')}`);
     // console.log(res.header('Content-Security-Policy'));

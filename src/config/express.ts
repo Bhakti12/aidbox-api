@@ -6,7 +6,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 // import cors from './cors';
 
-import ENV from './env';
+import {config} from './env';
 // import { morganLogger } from './logger';
 import { errorHandler } from '../middlewares/errorHandler';
 
@@ -51,7 +51,7 @@ app.use(function (req, res, next) {
 
 // Register routes
 // app.use(`${ENV.API_ROOT}/test`, routers.testRouter);
-app.use(`${ENV.API_ROOT}/questionnaireResponse`, routers.questionnareRouter);
+app.use(`${config.API_ROOT}/questionnaireResponse`, routers.questionnareRouter);
 // app.use(`${ENV.API_ROOT}/auth`, routers.authRoueRouter);
 
 // Use error handling middleware

@@ -2,7 +2,7 @@ import { inject, injectable } from "inversify";
 import { TYPES } from "../config/types";
 import { InternalServerError } from "../errors/InternalServerError";
 import { IQuestionnaireResponseService } from "../interfaces/IQuestionnaireResponseService";
-import { storeFormData } from "../types/Question";
+import { QuestionnaireResponse, storeFormData } from "../types/Question";
 import { IQuestionnaireResponseRepository } from "../interfaces/IQuestionnaireResponseRepository";
 import { createCtx, createApp, startApp, Resource, Manifest, CtxProps, ManifestOperation } from "@aidbox/node-server-sdk";
 import { createConfig } from "@aidbox/node-server-sdk";
@@ -32,7 +32,7 @@ export default class QuestionnaireResponseService implements IQuestionnaireRespo
         }
     }
     
-    async storeQuestionnaireResponse(question: any): Promise<any> {
+    async storeQuestionnaireResponse(question: QuestionnaireResponse): Promise<any> {
         try{
             const operations = await this._questionRepo.storeQuestionnaireResponse(question);
             return operations;
