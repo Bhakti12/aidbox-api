@@ -11,5 +11,7 @@ const questionnaireController = new QuestionnaireResponseController(questionnair
 
 router.get("/getForms",(req: express.Request, res: express.Response) => questionnaireController.getFormData(req,res));
 router.post("/storeQuestionnaireResponse",(req: express.Request, res: express.Response) => questionnaireController.storeQuestionnaireResponse(req,res));
+router.post("/generateLink",(req:express.Request,res:express.Response) => questionnaireController.generateLink(req,res));
+router.get("/share",(req:express.Request,res:express.Response) => questionnaireController.shareForm(req,res));
 
 export default router;

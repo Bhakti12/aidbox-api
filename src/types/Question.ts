@@ -28,3 +28,21 @@ export declare type Answer = {
         boolean?: boolean;
     };
 }
+
+//for linkgenerate API
+
+export declare type ValueReference = {
+    id: string;
+    resourceType: string;
+};
+
+export declare type Parameter = {
+    name: string;
+    valueReference?: ValueReference;
+    valueBoolean?: boolean;
+};
+
+export declare type Parameters = {
+    resourceType: string;
+    parameter: Parameter[];
+};
