@@ -11,7 +11,7 @@ import {config} from './env';
 import { errorHandler } from '../middlewares/errorHandler';
 
 // import { EventTypes } from './events';
-import subscribers from '../subscribers/index';
+// import subscribers from '../subscribers/index';
 
 // import routes
 import routers from '../routes/index';
