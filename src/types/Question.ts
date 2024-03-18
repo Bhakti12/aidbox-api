@@ -46,3 +46,72 @@ export declare type Parameters = {
     resourceType: string;
     parameter: Parameter[];
 };
+
+//for create custom resources
+
+export declare type resourceInformation = {
+    id : string;
+    type : string;
+    isOpen?: boolean;
+};
+
+//for add careplan data
+
+export declare type careplanDetails = {
+    diseaseDetails: string;
+    careplanDetails: string;
+};
+
+//for add pathway details 
+
+export declare type pathwayDetails = {
+    pathway_name: string;
+    careplan_id: string;
+    form_type_ids: Array<string>;
+};
+
+//for add formtypes details
+
+export declare type formtypesDetails = {
+    form_name: string;
+};
+
+//for add questionnaire data
+
+export declare type questionnaireDetails = {
+    resourceType: string;
+    status: string;
+    id?: string;
+    title: string;
+    url: string;
+    item: QuestionnaireDetails[],
+    meta: MetaData
+};
+
+export declare type QuestionnaireDetails = {
+    text: string;
+    type: string;
+    linkId: string;
+    answerOptions?: answerOption[];
+    extension?: Extension[]
+};
+
+export declare type Extension = {
+    url?: string;
+    valueInteger?: number;
+    valueInstant?: string;
+};
+
+export declare type answerOption = {
+    valueCoding: {
+        code: string,
+        system?: string,
+        display: string
+    }
+};
+
+export declare type MetaData = {
+    lastUpdated: string,
+    versionId: string,
+    extension: Extension[]
+};
