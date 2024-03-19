@@ -58,8 +58,29 @@ export declare type resourceInformation = {
 //for add careplan data
 
 export declare type careplanDetails = {
-    diseaseDetails: string;
-    careplanDetails: string;
+    resourceType:string;
+    status:string;
+    intent:string;
+    category:Category[];
+    subject:Subject;
+    title:string;
+    description:string;
+};
+
+export declare type Subject = {
+    resourceType?:string;
+    type?:string;
+    id?:string;
+};
+
+export declare type Category = {
+    coding: Coding[]
+};
+
+export declare type Coding = {
+    system: string;
+    code: number;
+    display: string
 };
 
 //for add pathway details 

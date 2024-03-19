@@ -122,8 +122,13 @@ export default class QuestionnaireResponseController extends BaseController {
   async addCareplanData(req: express.Request, res: express.Response) {
     try {
       const careplan: careplanDetails = {
-        diseaseDetails: req.body.diseaseDetails,
-        careplanDetails: req.body.careplanDetails,
+        resourceType: req.body.resourceType,
+        status: req.body.status,
+        intent: req.body.intent,
+        category: req.body.category,
+        subject: req.body.subject,
+        title: req.body.title,
+        description: req.body.description
       };
 
       const result = await this._questionService.addCareplanData(careplan);

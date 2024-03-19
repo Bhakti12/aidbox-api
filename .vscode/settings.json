@@ -1,0 +1,10 @@
+{
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "/src/json resources/*.json"
+            ],
+            "url": "./../../src/json/fhir.schema.json"
+        }
+    ]
+}

@@ -148,7 +148,7 @@ export class QuestionnaireResponseRepository
   }
   async addCareplanData(careplan: careplanDetails): Promise<any> {
     try {
-      const url = `${config.AIDBOX_URL}/careplan`;
+      const url = `${config.AIDBOX_URL}/CarePlan`;
       const username = config.AIDBOX_CLIENT_ID;
       const password = config.AIDBOX_CLIENT_SECRET;
 
