@@ -128,7 +128,7 @@ export default class QuestionnaireResponseController extends BaseController {
         category: req.body.category,
         subject: req.body.subject,
         title: req.body.title,
-        description: req.body.description
+        description: req.body.description,
       };
 
       const result = await this._questionService.addCareplanData(careplan);
@@ -142,9 +142,9 @@ export default class QuestionnaireResponseController extends BaseController {
   async addPathwayData(req: express.Request, res: express.Response) {
     try {
       const pathway: pathwayDetails = {
-        pathway_name: req.body.pathway_name,
-        careplan_id: req.body.careplan_id,
-        form_type_ids: req.body.form_type_ids,
+        resourceType: req.body.resourceType,
+        status: req.body.status,
+        pathway_details: req.body.pathway_details,
       };
       const result = await this._questionService.addPathwayData(pathway);
       return this.sendJSONResponse(res, "pathway added", { data: 1 }, result);
@@ -157,7 +157,9 @@ export default class QuestionnaireResponseController extends BaseController {
   async addFormTypesData(req: express.Request, res: express.Response) {
     try {
       const formtype: formtypesDetails = {
-        form_name: req.body.form_name,
+        resourceType: req.body.resourceType,
+        status: req.body.status,
+        formDetails: req.body.formDetails,
       };
       const result = await this._questionService.addFormTypeData(formtype);
       return this.sendJSONResponse(res, "formtype added", { data: 1 }, result);
@@ -169,14 +171,15 @@ export default class QuestionnaireResponseController extends BaseController {
 
   async addQuestionnaireData(req: express.Request, res: express.Response) {
     try {
-      const question: questionnaireDetails = {
+      const question: any = {
         resourceType: req.body.resourceType,
         status: req.body.status,
         title: req.body.title,
         url: req.body.url,
         item: req.body.item,
         meta: req.body.meta,
-        id: req.body.id,
+        form_type_id: req.body.form_type_id,
+        pathway_id: req.body.pathway_id,
       };
 
       const result = await this._questionService.addQuestionnaireData(question);
@@ -192,41 +195,46 @@ export default class QuestionnaireResponseController extends BaseController {
     }
   }
 
-  async getCareplan(req:express.Request,res:express.Response) {
-    try{
+  async getCareplan(req: express.Request, res: express.Response) {
+    try {
       const result = await this._questionService.getCareplan();
-      return this.sendJSONResponse(res,"careplan data",{data:1},result);
-    }catch(err:any){
+      return this.sendJSONResponse(res, "careplan data", { data: 1 }, result);
+    } catch (err: any) {
       console.log("err", err);
       return this.sendErrorResponse(req, res, err);
     }
   }
 
-  async getPathway(req:express.Request,res:express.Response) {
-    try{
+  async getPathway(req: express.Request, res: express.Response) {
+    try {
       const result = await this._questionService.getPathway();
-      return this.sendJSONResponse(res,"pathway data",{data:1},result);
-    }catch(err:any){
+      return this.sendJSONResponse(res, "pathway data", { data: 1 }, result);
+    } catch (err: any) {
       console.log("err", err);
       return this.sendErrorResponse(req, res, err);
     }
   }
 
-  async getFormtype(req:express.Request,res:express.Response) {
-    try{
+  async getFormtype(req: express.Request, res: express.Response) {
+    try {
       const result = await this._questionService.getFormType();
-      return this.sendJSONResponse(res,"formTypes data",{data:1},result);
-    }catch(err:any){
+      return this.sendJSONResponse(res, "formTypes data", { data: 1 }, result);
+    } catch (err: any) {
       console.log("err", err);
       return this.sendErrorResponse(req, res, err);
     }
   }
 
-  async getQuestionnaireResponse(req:express.Request,res:express.Response) {
-    try{
+  async getQuestionnaireResponse(req: express.Request, res: express.Response) {
+    try {
       const result = await this._questionService.getQuestionnaireResponse();
-      return this.sendJSONResponse(res,"questionnaireResponse data",{data:1},result);
-    }catch(err:any){
+      return this.sendJSONResponse(
+        res,
+        "questionnaireResponse data",
+        { data: 1 },
+        result
+      );
+    } catch (err: any) {
       console.log("err", err);
       return this.sendErrorResponse(req, res, err);
     }

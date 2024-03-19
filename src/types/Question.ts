@@ -86,15 +86,41 @@ export declare type Coding = {
 //for add pathway details 
 
 export declare type pathwayDetails = {
+    resourceType: string;
+    status: string;
+    pathway_details: pathway_details;
+};
+
+export declare type pathway_details = {
     pathway_name: string;
+    careplan_details: careplan_pathway;
+    formtypes_details: formtypes_pathway;
+};
+
+export declare type careplan_pathway = {
     careplan_id: string;
-    form_type_ids: Array<string>;
+};
+
+export declare type formtypes_pathway = {
+    formtype_ids: Array<string>;
 };
 
 //for add formtypes details
 
 export declare type formtypesDetails = {
+    resourceType: string;
+    status: string;
+    formDetails: formDetails;
+};
+
+export declare type formDetails = {
     form_name: string;
+    form_code: string;
+    description: string;
+    form_fill_stage: string;
+    form_filled_by: string;
+    form_accessed_by: string;
+    careplan_id: string;
 };
 
 //for add questionnaire data
@@ -103,24 +129,50 @@ export declare type questionnaireDetails = {
     resourceType: string;
     status: string;
     id?: string;
+    pathway_id: string;
+    form_type_id: string;
     title: string;
     url: string;
     item: QuestionnaireDetails[],
-    meta: MetaData
+    meta?: MetaData,
+    extension?: Extension
 };
 
 export declare type QuestionnaireDetails = {
     text: string;
     type: string;
     linkId: string;
+    required?: boolean;
+    item?:QuestionnaireDetails[];
+    enableWhen?: enableWhen[];
+    enableBehavior?:string;
     answerOptions?: answerOption[];
     extension?: Extension[]
+};
+
+export declare type enableWhen = {
+    answerBoolean?:boolean;
+    operator?:string;
+    question?:string;
 };
 
 export declare type Extension = {
     url?: string;
     valueInteger?: number;
     valueInstant?: string;
+    valueCodeableConcept?:valueCodableConcept[];
+    valueCode?:string;
+    valueString?:string;
+};
+
+export declare type valueCodableConcept = {
+    coding: Codingcode[]
+};
+
+export declare type Codingcode = {
+    code?: string;
+    system?: string;
+    display?: string;
 };
 
 export declare type answerOption = {
@@ -132,7 +184,7 @@ export declare type answerOption = {
 };
 
 export declare type MetaData = {
-    lastUpdated: string,
-    versionId: string,
-    extension: Extension[]
+    lastUpdated: string;
+    versionId: string;
+    extension: Extension[];
 };
