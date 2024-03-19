@@ -11,7 +11,7 @@ export interface IQuestionnaireResponseRepository{
     addCareplanData(careplanData:careplanDetails) : Promise<any>;
     addFormTypeData(formType:formtypesDetails) : Promise<any>;
     addPathwayData(pathway:pathwayDetails) : Promise<any>;
-    addQuestionnaireData(questionnaire:questionnaireDetails) : Promise<any>;
+    updateQuestionnaireData(questionnaire:questionnaireDetails) : Promise<any>;
     getCareplan(): Promise<any>;
     getPathway(): Promise<any>;
     getFormType(): Promise<any>;

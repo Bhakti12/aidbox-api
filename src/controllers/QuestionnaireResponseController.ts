@@ -182,7 +182,7 @@ export default class QuestionnaireResponseController extends BaseController {
         pathway_id: req.body.pathway_id,
       };
 
-      const result = await this._questionService.addQuestionnaireData(question);
+      const result = await this._questionService.updateQuestionnaireData(question);
       return this.sendJSONResponse(
         res,
         "question data added",

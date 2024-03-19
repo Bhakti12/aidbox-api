@@ -139,9 +139,9 @@ export default class QuestionnaireResponseService
       );
     }
   }
-  async addQuestionnaireData(question: questionnaireDetails): Promise<any> {
+  async updateQuestionnaireData(question: questionnaireDetails): Promise<any> {
     try {
-      const result = await this._questionRepo.addQuestionnaireData(question);
+      const result = await this._questionRepo.updateQuestionnaireData(question);
       return result;
     } catch (err: any) {
       console.log("err", err);

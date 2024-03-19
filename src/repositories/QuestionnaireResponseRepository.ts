@@ -218,7 +218,7 @@ export class QuestionnaireResponseRepository
       );
     }
   }
-  async addQuestionnaireData(question: questionnaireDetails): Promise<any> {
+  async updateQuestionnaireData(question: questionnaireDetails): Promise<any> {
     try {
       const url = `${config.AIDBOX_URL}/Questionnaire`;
       const username = config.AIDBOX_CLIENT_ID;

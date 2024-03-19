@@ -10,7 +10,7 @@ export interface IQuestionnaireResponseService{
     addCareplanData(careplan:careplanDetails) : Promise<any>;
     addFormTypeData(formtype:formtypesDetails) : Promise<any>;
     addPathwayData(pathway:pathwayDetails) : Promise<any>;
-    addQuestionnaireData(questionnaire:questionnaireDetails) : Promise<any>;
+    updateQuestionnaireData(questionnaire:questionnaireDetails) : Promise<any>;
     getCareplan(): Promise<any>;
     getPathway(): Promise<any>;
     getFormType(): Promise<any>;
