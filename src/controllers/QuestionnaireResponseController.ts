@@ -54,6 +54,7 @@ export default class QuestionnaireResponseController extends BaseController {
         resourceType: req.body.resourceType,
         status: req.body.status,
         item: req.body.item,
+        questionnaire: req.body.questionnaire,
       };
 
       const result = await this._questionService.storeQuestionnaireResponse(
@@ -169,7 +170,7 @@ export default class QuestionnaireResponseController extends BaseController {
     }
   }
 
-  async addQuestionnaireData(req: express.Request, res: express.Response) {
+  async updateQuestionnaireData(req: express.Request, res: express.Response) {
     try {
       const question: any = {
         resourceType: req.body.resourceType,
@@ -182,7 +183,9 @@ export default class QuestionnaireResponseController extends BaseController {
         pathway_id: req.body.pathway_id,
       };
 
-      const result = await this._questionService.updateQuestionnaireData(question);
+      const result = await this._questionService.updateQuestionnaireData(
+        question
+      );
       return this.sendJSONResponse(
         res,
         "question data added",

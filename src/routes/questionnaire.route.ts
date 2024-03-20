@@ -42,7 +42,7 @@ router.post("/addFormTypes", (req: express.Request, res: express.Response) =>
 router.post(
   "/addQuestionnaireData",
   (req: express.Request, res: express.Response) =>
-    questionnaireController.addQuestionnaireData(req, res)
+    questionnaireController.updateQuestionnaireData(req, res)
 );
 router.get("/getcareplans", (req: express.Request, res: express.Response) =>
   questionnaireController.getCareplan(req, res)

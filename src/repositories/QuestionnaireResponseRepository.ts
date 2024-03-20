@@ -228,7 +228,7 @@ export class QuestionnaireResponseRepository
         "base64"
       );
 
-      const result = await axios.post(url, question, {
+      const result = await axios.put(url, question, {
         headers: {
           Authorization: `Basic ${credentials}`,
           accept: "application/json",

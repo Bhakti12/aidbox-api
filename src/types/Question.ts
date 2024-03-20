@@ -14,20 +14,43 @@ export declare type QuestionnaireResponse = {
     resourceType: string;
     status: string;
     item: QuestionnaireItem[];
+    questionnaire: string;
 };
 
 export declare type QuestionnaireItem = {
     text: string;
     answer: Answer[];
     linkId: string;
+    item: QuestionnaireItem[];
 };
 
 export declare type Answer = {
     value: {
         string?: string;
         boolean?: boolean;
+        number?: number;
+        date?: string;
+        coding?:codingans;
+        attachment?:FileAttachment;
+        uri?:string;
+        time?:string;
+        quantity?:string;
+        reference?:string;
+        item?:QuestionnaireItem[];
     };
 }
+
+export declare type FileAttachment = {
+    creation?:string;
+    contentType?:string;
+    data?:string;
+};
+
+export declare type codingans = {
+    code?:string;
+    system?:string;
+    display?:string;
+};
 
 //for linkgenerate API
 
