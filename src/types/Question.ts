@@ -150,64 +150,72 @@ export declare type formDetails = {
 
 export declare type questionnaireDetails = {
     resourceType: string;
-    status: string;
-    id?: string;
-    pathway_id: string;
-    form_type_id: string;
+    id: string;
     title: string;
+    status: string;
     url: string;
-    item: QuestionnaireDetails[],
-    meta?: MetaData,
-    extension?: Extension
+    item: Qitem[];
+    meta?: QMeta[];
 };
 
-export declare type QuestionnaireDetails = {
-    text: string;
-    type: string;
-    linkId: string;
-    required?: boolean;
-    item?:QuestionnaireDetails[];
-    enableWhen?: enableWhen[];
+export declare type QMeta = {
+    lastUpdated?:string;
+    versionId?:string;
+    extension:QExtension[];
+};
+
+export declare type Qitem = {
+    linkId?:string;
+    text?:string;
+    type?:string;
+    extension?:QExtension;
+    enableWhen?:QenableWhen;
+    required?:boolean;
+    disabled:{
+        display?:string
+    };
     enableBehavior?:string;
-    answerOptions?: answerOption[];
-    extension?: Extension[]
+    initial?:QInitial[];
+    item?:Qitem[];
 };
 
-export declare type enableWhen = {
-    answerBoolean?:boolean;
-    operator?:string;
-    question?:string;
-};
-
-export declare type Extension = {
-    url?: string;
-    valueInteger?: number;
-    valueInstant?: string;
-    valueCodeableConcept?:valueCodableConcept[];
-    valueCode?:string;
-    valueString?:string;
-};
-
-export declare type valueCodableConcept = {
-    coding: Codingcode[]
-};
-
-export declare type Codingcode = {
-    code?: string;
-    system?: string;
-    display?: string;
-};
-
-export declare type answerOption = {
-    valueCoding: {
-        code: string,
-        system?: string,
-        display: string
+export declare type QInitial = {
+    value:{
+        boolean?:boolean;
+        decimal?:number;
+        integer?:number;
+        date?:string;
+        datetime?:string;
+        string?:string;
+        uri?:string;
+        attachment?:string;
+        coding?:Coding[];
+        quantity?:string;
+        reference?:string;
     }
 };
 
-export declare type MetaData = {
-    lastUpdated: string;
-    versionId: string;
-    extension: Extension[];
+export declare type QExtension = {
+    url?:string;
+    value:{
+        integer?:number;
+        instant?:string;
+    }  
+};
+
+export declare type QenableWhen = {
+    question?:string;
+    operation?:string;
+    answer?:{
+        boolean?:boolean;
+        decimal?:number;
+        integer?:number;
+        date?:string;
+        datetime?:string;
+        time?:string;
+        string?:string;
+        quantity?:string;
+        reference?:string;
+        coding?:Coding;
+    }
 };

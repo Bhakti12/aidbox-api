@@ -39,8 +39,8 @@ router.post("/addPathway", (req: express.Request, res: express.Response) =>
 router.post("/addFormTypes", (req: express.Request, res: express.Response) =>
   questionnaireController.addFormTypesData(req, res)
 );
-router.post(
-  "/addQuestionnaireData",
+router.put(
+  "/updateQuestionnaireData",
   (req: express.Request, res: express.Response) =>
     questionnaireController.updateQuestionnaireData(req, res)
 );

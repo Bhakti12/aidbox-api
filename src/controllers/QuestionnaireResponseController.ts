@@ -172,15 +172,14 @@ export default class QuestionnaireResponseController extends BaseController {
 
   async updateQuestionnaireData(req: express.Request, res: express.Response) {
     try {
-      const question: any = {
+      const question: questionnaireDetails = {
         resourceType: req.body.resourceType,
         status: req.body.status,
         title: req.body.title,
         url: req.body.url,
+        id: req.body.id,
         item: req.body.item,
         meta: req.body.meta,
-        form_type_id: req.body.form_type_id,
-        pathway_id: req.body.pathway_id,
       };
 
       const result = await this._questionService.updateQuestionnaireData(

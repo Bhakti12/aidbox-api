@@ -220,19 +220,22 @@ export class QuestionnaireResponseRepository
   }
   async updateQuestionnaireData(question: questionnaireDetails): Promise<any> {
     try {
-      const url = `${config.AIDBOX_URL}/Questionnaire`;
+      console.log("question",question);
+      const url = `${config.AIDBOX_URL}/Questionnaire/${question.id}`;
       const username = config.AIDBOX_CLIENT_ID;
       const password = config.AIDBOX_CLIENT_SECRET;
+
+      console.log("url",url);
 
       const credentials = Buffer.from(`${username}:${password}`).toString(
         "base64"
       );
 
-      const result = await axios.put(url, question, {
+      const result = await axios.put(url,question,{
         headers: {
           Authorization: `Basic ${credentials}`,
-          accept: "application/json",
-        },
+          Accept: "application/json"
+        }
       });
       return result.data;
     } catch (err: any) {
