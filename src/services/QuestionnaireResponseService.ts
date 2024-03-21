@@ -198,4 +198,28 @@ export default class QuestionnaireResponseService
       );
     }
   }
+
+  async getPathwayOfCareplan(careplan_id: string): Promise<any> {
+    try {
+      const result = await this._questionRepo.getPathwayOfCareplan(careplan_id);
+      return result;
+    } catch (err: any) {
+      console.log("err", err);
+      throw new InternalServerError(
+        "An error occurred while interacting with the database"
+      );
+    }
+  }
+
+  async getFormsOfPathway(pathway_id: string): Promise<any> {
+    try {
+      const result = await this._questionRepo.getFormsOfPathway(pathway_id);
+      return result;
+    } catch (err: any) {
+      console.log("err", err);
+      throw new InternalServerError(
+        "An error occurred while interacting with the database"
+      );
+    }
+  }
 }

@@ -346,4 +346,39 @@ export class QuestionnaireResponseRepository
       );
     }
   }
+
+  async getPathwayOfCareplan(careplan_id: string): Promise<any> {
+    try{
+      const url = `${config.AIDBOX_URL}/pathway`;
+      const username = config.AIDBOX_CLIENT_ID;
+      const password = config.AIDBOX_CLIENT_SECRET;
+
+      const credentials = Buffer.from(`${username}:${password}`).toString(
+        "base64"
+      );
+
+      const result = await axios.get(url,{
+        headers: {
+          Authorization: `Basic ${credentials}`,
+        }, 
+      });
+      return result.data;
+    }catch(err:any){
+      console.log("err", err.response.data);
+      throw new InternalServerError(
+        "An error occurred while interacting with the database"
+      );
+    }
+  }
+  
+  async getFormsOfPathway(pathway_id: string): Promise<any> {
+    try{
+
+    }catch(err:any){
+      console.log("err", err.response.data);
+      throw new InternalServerError(
+        "An error occurred while interacting with the database"
+      );
+    }
+  }
 }

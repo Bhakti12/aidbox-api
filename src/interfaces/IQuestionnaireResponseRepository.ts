@@ -16,4 +16,6 @@ export interface IQuestionnaireResponseRepository{
     getPathway(): Promise<any>;
     getFormType(): Promise<any>;
     getQuestionnaireResponse(): Promise<any>;
+    getPathwayOfCareplan(careplan_id: string): Promise<any>;
+    getFormsOfPathway(pathway_id: string): Promise<any>;
 }

@@ -58,5 +58,10 @@ router.get(
   (req: express.Request, res: express.Response) =>
     questionnaireController.getQuestionnaireResponse(req, res)
 );
+router.get(
+  "/getPathwayOfCareplan",
+  (req: express.Request, res: express.Response) =>
+    questionnaireController.getPathwayOfCareplan(req, res)
+);
 
 export default router;

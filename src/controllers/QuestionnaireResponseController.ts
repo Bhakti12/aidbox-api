@@ -241,4 +241,22 @@ export default class QuestionnaireResponseController extends BaseController {
       return this.sendErrorResponse(req, res, err);
     }
   }
+
+  async getPathwayOfCareplan(req: express.Request, res: express.Response) {
+    try {
+      const careplan_id: string = req.body.careplan_id;
+      const result = await this._questionService.getPathwayOfCareplan(
+        careplan_id
+      );
+      return this.sendJSONResponse(
+        res,
+        "get pathway of particular careplan",
+        { data: 1 },
+        result
+      );
+    } catch (err: any) {
+      console.log("err", err);
+      return this.sendErrorResponse(req, res, err);
+    }
+  }
 }
