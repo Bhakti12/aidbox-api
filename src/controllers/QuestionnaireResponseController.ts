@@ -69,9 +69,8 @@ export default class QuestionnaireResponseController extends BaseController {
 
   async shareForm(req: express.Request, res: express.Response) {
     try {
-      const url =
-        "http://localhost:8888/ui/sdc#/questionnaire-response/704f1f2c-7d7a-464d-b941-35043ae64c38?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJTRENTaGFyZWRMaW5rSXNzdWVyIiwiZXhwIjoxNzExMDY1NjAwLCJvcGVyYXRpb25zIjpbImZoaXItcHJvY2Vzcy1yZXNwb25zZSIsInByb2Nlc3MtcmVzcG9uc2UiXSwicSI6eyJpZCI6InNpbXBsZS1mb3JtIiwidXJsIjoiaHR0cDovL2Zvcm1zLmFpZGJveC5pby9xdWVzdGlvbm5haXJlL3BlcnNvbmFsLWRldGFpbHMifSwicXIiOnsiaWQiOiI3MDRmMWYyYy03ZDdhLTQ2NGQtYjk0MS0zNTA0M2FlNjRjMzgifSwiYWxsb3ctYW1lbmQiOm51bGwsInJlZGlyZWN0LW9uLXNhdmUiOm51bGwsInJlZGlyZWN0LW9uLXN1Ym1pdCI6bnVsbH0.DGf-RNLSiED8B8xCuoUhnIi0_CvnfYfatjaGYtNNNuI";
-      const outpath = "output.pdf";
+      const url = req.body.url;
+      const outpath = req.body.outpath;
       const generatePDF = await this._questionService.shareForm(url, outpath);
       return this.sendJSONResponse(
         res,
