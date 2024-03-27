@@ -3,6 +3,7 @@ import { ISubscriptionService } from "../interfaces/ISubscriptionService";
 import { ISubscriptionRepository } from "../interfaces/ISubscriptionRepostiory";
 import { TYPES } from "../config/types";
 import { Subscription } from "../types/Subscription";
+import { InternalServerError } from "../errors/InternalServerError";
 
 @injectable()
 export class SubscriptionService implements ISubscriptionService {
@@ -16,15 +17,47 @@ export class SubscriptionService implements ISubscriptionService {
   }
 
   async createSubscription(subscription:Subscription): Promise<any> {
-    throw new Error("Method not implemented.");
+    try {
+        const operations = await this._subscriptionRepo.createSubscription(subscription);
+        return operations;
+      } catch (err) {
+        console.log("err", err);
+        throw new InternalServerError(
+          "An error occurred while interacting with the database"
+        );
+      }
   }
   async getStatusOfSubscription(): Promise<any> {
-    throw new Error("Method not implemented.");
+    try {
+        const operations = await this._subscriptionRepo.getStatusOfSubscription();
+        return operations;
+      } catch (err) {
+        console.log("err", err);
+        throw new InternalServerError(
+          "An error occurred while interacting with the database"
+        );
+      }
   }
   async getSubscriptionEvents(): Promise<any> {
-    throw new Error("Method not implemented.");
+    try {
+        const operations = await this._subscriptionRepo.getSubscriptionEvents();
+        return operations;
+      } catch (err) {
+        console.log("err", err);
+        throw new InternalServerError(
+          "An error occurred while interacting with the database"
+        );
+      }
   }
   async deleteSubscriptions(): Promise<any> {
-    throw new Error("Method not implemented.");
+    try {
+        const operations = await this._subscriptionRepo.deleteSubscriptions();
+        return operations;
+      } catch (err) {
+        console.log("err", err);
+        throw new InternalServerError(
+          "An error occurred while interacting with the database"
+        );
+      }
   }
 }
