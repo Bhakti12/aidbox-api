@@ -11,6 +11,11 @@ import { ISubscriptionRepository } from '../interfaces/ISubscriptionRepostiory';
 import { ISubscriptionService } from '../interfaces/ISubscriptionService';
 import { SubscriptionRepostory } from '../repositories/SubscriptionRepository';
 import { SubscriptionService } from '../services/SubscriptionService';
+import { IPathwayscenarioRepository } from '../interfaces/IPathwayscenarioRepository';
+import PathwayScenarioController from '../controllers/pathwayScenarioController';
+import PathwayscenarioRepository from '../repositories/PathwayscenarioRepository';
+import { IPathwayscenarioService } from '../interfaces/IPathwayscenarioService';
+import PathwayscenarioService from '../services/PathwayscenarioService';
 // import QuestionnaireResponseService from '../services/QUestionnaireResponseServicevice';
 
 const iocContainer = new Container();
@@ -23,5 +28,7 @@ iocContainer.bind<IQuestionnaireResponseRepository>(TYPES.QuestionnaireResponseR
 iocContainer.bind<IQuestionnaireResponseService>(TYPES.QuestionnaireResponseService).to(QuestionnaireResponseService);
 iocContainer.bind<ISubscriptionRepository>(TYPES.SubscriptionRepostory).to(SubscriptionRepostory);
 iocContainer.bind<ISubscriptionService>(TYPES.SubscriptionService).to(SubscriptionService);
+iocContainer.bind<IPathwayscenarioRepository>(TYPES.PathwayscenarioRepository).to(PathwayscenarioRepository);
+iocContainer.bind<IPathwayscenarioService>(TYPES.PathwayscenarioService).to(PathwayscenarioService);
 
 export { iocContainer };
