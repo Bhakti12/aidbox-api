@@ -9,7 +9,7 @@ import axios from "axios";
 export class SubscriptionRepostory implements ISubscriptionRepository {
   async createSubscription(subscription: Subscription): Promise<any> {
     try {
-      const url = `${config.AIDBOX_URL}/Subscription`;
+      const url = `${config.AIDBOX_URL}/fhir/Subscription`;
       const username = config.AIDBOX_CLIENT_ID;
       const password = config.AIDBOX_CLIENT_SECRET;
       const credentials = Buffer.from(`${username}:${password}`).toString(
@@ -23,7 +23,7 @@ export class SubscriptionRepostory implements ISubscriptionRepository {
       });
       return result.data;
     } catch (err) {
-      console.log("err", err);
+      console.log("err", err.response.data);
       throw new InternalServerError(
         "An error occurred while interacting with the database"
       );
@@ -32,7 +32,7 @@ export class SubscriptionRepostory implements ISubscriptionRepository {
 
   async getStatusOfSubscription(): Promise<any> {
     try {
-      const url = `${config.AIDBOX_URL}/Subscription/subscription-patient-test-1/$status`;
+      const url = `${config.AIDBOX_URL}/fhir/Subscription/cf153a1fde850de90215a6cd0f0abcf5/$status`;
       const username = config.AIDBOX_CLIENT_ID;
       const password = config.AIDBOX_CLIENT_SECRET;
       const credentials = Buffer.from(`${username}:${password}`).toString(
@@ -45,7 +45,7 @@ export class SubscriptionRepostory implements ISubscriptionRepository {
       });
       return result.data;
     } catch (err) {
-      console.log("err", err);
+      console.log("err", err.response.data);
       throw new InternalServerError(
         "An error occurred while interacting with the database"
       );
@@ -54,7 +54,7 @@ export class SubscriptionRepostory implements ISubscriptionRepository {
   
   async getSubscriptionEvents(): Promise<any> {
     try {
-      const url = `${config.AIDBOX_URL}/Subscription/subscription-patient-test-1/$events`;
+      const url = `${config.AIDBOX_URL}/Subscription/cf153a1fde850de90215a6cd0f0abcf5/$events`;
       const username = config.AIDBOX_CLIENT_ID;
       const password = config.AIDBOX_CLIENT_SECRET;
       const credentials = Buffer.from(`${username}:${password}`).toString(
@@ -76,7 +76,7 @@ export class SubscriptionRepostory implements ISubscriptionRepository {
 
   async deleteSubscriptions(): Promise<any> {
     try {
-        const url = `${config.AIDBOX_URL}/Subscription/subscription-patient-test-1`;
+        const url = `${config.AIDBOX_URL}/Subscription/cf153a1fde850de90215a6cd0f0abcf5`;
       const username = config.AIDBOX_CLIENT_ID;
       const password = config.AIDBOX_CLIENT_SECRET;
       const credentials = Buffer.from(`${username}:${password}`).toString(

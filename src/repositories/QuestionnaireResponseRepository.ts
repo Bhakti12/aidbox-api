@@ -72,7 +72,7 @@ export class QuestionnaireResponseRepository
       });
       return result.data;
     } catch (err) {
-      console.log("err", err.response.data);
+      console.log("err", err);
       throw new InternalServerError(
         "An error occurred while interacting with the database"
       );

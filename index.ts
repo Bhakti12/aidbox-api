@@ -19,11 +19,11 @@ app.get(`${config.API_ROOT}/static/:name`, (req, res) => {
 
 
 // Start Express server
-app.listen(3000, function () {
-    console.log('server running at ', 3000);
+app.listen(5001, function () {
+    console.log('server running at ',5001);
 });
 
-app.use(routers.questionnareRouter);
+app.use(routers.questionnareRouter,routers.subscriptionRouter);
 
 // Start websocket server
 // const io = new Server(server, {
