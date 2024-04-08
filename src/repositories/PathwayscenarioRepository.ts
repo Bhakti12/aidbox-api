@@ -59,6 +59,20 @@ export default class PathwayscenarioRepository
   }
   async getFormsOfPatient(): Promise<any> {
     try {
+        const url = `${config.AIDBOX_URL}/$query/daily-report`;
+      const username = config.AIDBOX_CLIENT_ID;
+      const password = config.AIDBOX_CLIENT_SECRET;
+
+      const credentials = Buffer.from(`${username}:${password}`).toString(
+        "base64"
+      );
+
+      const result = await axios.get(url, {
+        headers: {
+          Authorization: `Basic ${credentials}`,
+        },
+      });
+      return result.data;
     } catch (err) {
       console.log("err", err);
       throw new InternalServerError(

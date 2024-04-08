@@ -23,7 +23,12 @@ export default class PathwayScenarioController extends BaseController {
       const result = await this._pathwayService.addPathway_formtypes(
         pathway_formtypes
       );
-      this.sendJSONResponse(res, "added formtype pathway", { data: 1 }, result);
+      return this.sendJSONResponse(
+        res,
+        "added formtype pathway",
+        { data: 1 },
+        result
+      );
     } catch (err) {
       console.log(err);
       this.sendErrorResponse(req, res, err);
@@ -43,7 +48,30 @@ export default class PathwayScenarioController extends BaseController {
       const result = await this._pathwayService.addCareplan_pathway(
         careplan_pathway
       );
-      this.sendJSONResponse(res, "added careplan pathway", { data: 1 }, result);
+      return this.sendJSONResponse(
+        res,
+        "added careplan pathway",
+        { data: 1 },
+        result
+      );
+    } catch (err) {
+      console.log(err);
+      this.sendErrorResponse(req, res, err);
+    }
+  }
+
+  async getFormsofPatient(
+    req: express.Request,
+    res: express.Response
+  ): Promise<any> {
+    try {
+      const result = await this._pathwayService.getFormsOfPatient();
+      return this.sendJSONResponse(
+        res,
+        "added careplan pathway",
+        { data: 1 },
+        result
+      );
     } catch (err) {
       console.log(err);
       this.sendErrorResponse(req, res, err);

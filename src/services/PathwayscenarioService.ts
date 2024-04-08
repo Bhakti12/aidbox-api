@@ -42,6 +42,8 @@ export default class PathwayscenarioService implements IPathwayscenarioService {
   }
   async getFormsOfPatient(): Promise<any> {
     try {
+      const result = await this._pathwayRepo.getFormsOfPatient();
+      return result;
     } catch (err) {
       console.log("err", err);
       throw new InternalServerError(
