@@ -14,12 +14,14 @@ const pathwayScenarioController = new PathwayScenarioController(pathwayService);
 router.post(
   "/add-formtype-pathway",
   (req: express.Request, res: express.Response) =>
-    pathwayScenarioController.addPathway_formtypes(req,res)
+    pathwayScenarioController.addPathway_formtypes(req, res)
 );
 router.post(
   "/add-careplan-pathway",
   (req: express.Request, res: express.Response) =>
-    pathwayScenarioController.careplan_pathway(req,res)
+    pathwayScenarioController.careplan_pathway(req, res)
 );
-
+router.get("get-form-data", (req: express.Request, res: express.Response) =>
+  pathwayScenarioController.getFormsofPatient(req, res)
+);
 export default router;
