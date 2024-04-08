@@ -84,7 +84,6 @@ export declare type careplanDetails = {
     resourceType:string;
     status:string;
     intent:string;
-    category:Category[];
     subject:Subject;
     title:string;
     description:string;
@@ -94,10 +93,6 @@ export declare type Subject = {
     resourceType?:string;
     type?:string;
     id?:string;
-};
-
-export declare type Category = {
-    coding: Coding[]
 };
 
 export declare type Coding = {
@@ -116,16 +111,6 @@ export declare type pathwayDetails = {
 
 export declare type pathway_details = {
     pathway_name: string;
-    careplan_details: careplan_pathway;
-    formtypes_details: formtypes_pathway;
-};
-
-export declare type careplan_pathway = {
-    careplan_id: string;
-};
-
-export declare type formtypes_pathway = {
-    formtype_ids: Array<string>;
 };
 
 //for add formtypes details
@@ -143,7 +128,6 @@ export declare type formDetails = {
     form_fill_stage: string;
     form_filled_by: string;
     form_accessed_by: string;
-    careplan_id: string;
 };
 
 //for add questionnaire data

@@ -125,7 +125,6 @@ export default class QuestionnaireResponseController extends BaseController {
         resourceType: req.body.resourceType,
         status: req.body.status,
         intent: req.body.intent,
-        category: req.body.category,
         subject: req.body.subject,
         title: req.body.title,
         description: req.body.description,
