@@ -23,7 +23,7 @@ app.listen(5001, function () {
     console.log('server running at ',5001);
 });
 
-app.use(routers.questionnareRouter,routers.subscriptionRouter);
+app.use(routers.questionnareRouter,routers.subscriptionRouter,routers.pathwayRouter);
 
 // Start websocket server
 // const io = new Server(server, {
