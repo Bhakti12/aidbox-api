@@ -21,7 +21,7 @@ router.post(
   (req: express.Request, res: express.Response) =>
     pathwayScenarioController.careplan_pathway(req, res)
 );
-router.get("get-form-data", (req: express.Request, res: express.Response) =>
+router.get("/get-form-data", (req: express.Request, res: express.Response) =>
   pathwayScenarioController.getFormsofPatient(req, res)
 );
 export default router;
