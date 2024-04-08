@@ -16,6 +16,18 @@ import PathwayScenarioController from '../controllers/pathwayScenarioController'
 import PathwayscenarioRepository from '../repositories/PathwayscenarioRepository';
 import { IPathwayscenarioService } from '../interfaces/IPathwayscenarioService';
 import PathwayscenarioService from '../services/PathwayscenarioService';
+import { IPathwayRepository } from '../interfaces/IPathwayRepository';
+import PathwayRepository from '../repositories/PathwayRepository';
+import { IPathwayService } from '../interfaces/IPathwayService';
+import pathwayService from '../services/PathwayService';
+import { ICarePlanRepository } from '../interfaces/ICarePlanRepository';
+import CareplanRepository from '../repositories/CareplanRepository';
+import { ICarePlanService } from '../interfaces/ICarePlanService';
+import CareplanService from '../services/CareplanService';
+import { IFormtypesRepository } from '../interfaces/IFormtypesRepository';
+import Formtypes from '../repositories/FormtypesRepository';
+import { IFormtypesService } from '../interfaces/IFormtypesService';
+import formtypeService from '../services/FormtypesService';
 // import QuestionnaireResponseService from '../services/QUestionnaireResponseServicevice';
 
 const iocContainer = new Container();
@@ -30,5 +42,11 @@ iocContainer.bind<ISubscriptionRepository>(TYPES.SubscriptionRepostory).to(Subsc
 iocContainer.bind<ISubscriptionService>(TYPES.SubscriptionService).to(SubscriptionService);
 iocContainer.bind<IPathwayscenarioRepository>(TYPES.PathwayscenarioRepository).to(PathwayscenarioRepository);
 iocContainer.bind<IPathwayscenarioService>(TYPES.PathwayscenarioService).to(PathwayscenarioService);
+iocContainer.bind<IPathwayRepository>(TYPES.PathwayRepository).to(PathwayRepository);
+iocContainer.bind<IPathwayService>(TYPES.PathwayService).to(pathwayService);
+iocContainer.bind<ICarePlanRepository>(TYPES.CarePlanRepository).to(CareplanRepository);
+iocContainer.bind<ICarePlanService>(TYPES.CarePlanService).to(CareplanService);
+iocContainer.bind<IFormtypesRepository>(TYPES.FormtypesRepository).to(Formtypes);
+iocContainer.bind<IFormtypesService>(TYPES.FormtypesService).to(formtypeService);
 
 export { iocContainer };
