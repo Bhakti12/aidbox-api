@@ -1,0 +1,5 @@
+import { formtypes_pathway } from "../types/Pathwayscenario";
+
+export interface IPathway_formtypesRepository{
+    addPathway_formtypes(pathwayFormtype:formtypes_pathway):Promise<any>;
+}
