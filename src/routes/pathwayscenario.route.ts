@@ -24,4 +24,7 @@ router.post(
 router.get("/get-form-data", (req: express.Request, res: express.Response) =>
   pathwayScenarioController.getFormsofPatient(req, res)
 );
+router.put("/update-query", (req: express.Request, res: express.Response) =>
+  pathwayScenarioController.storeQuery(req, res)
+);
 export default router;

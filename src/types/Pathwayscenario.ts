@@ -9,3 +9,8 @@ export declare type formtypes_pathway = {
     pathway_id: string;
     formtype_id: string;
 };
+
+export declare type aidboxQuery = {
+    params : string;
+    query : string;
+};
