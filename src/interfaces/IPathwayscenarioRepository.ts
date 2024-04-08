@@ -1,5 +1,7 @@
+import { careplan_pathway, formtypes_pathway } from "../types/Pathwayscenario";
+
 export interface IPathwayscenarioRepository{
-    addPathway_formtypes():Promise<any>;
-    addCareplan_pathway():Promise<any>;
+    addPathway_formtypes(pathwayFormtype:formtypes_pathway):Promise<any>;
+    addCareplan_pathway(careplanPathway:careplan_pathway):Promise<any>;
     getFormsOfPatient():Promise<any>;
 }
