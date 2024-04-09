@@ -32,6 +32,10 @@ import { IPathway_formtypesRepository } from '../interfaces/IPathway_formtypesRe
 import { IPathway_formtypesService } from '../interfaces/IPathway_formtypesService';
 import { ICareplan_pathwayRepository } from '../interfaces/ICareplan_pathwayRepository';
 import { ICareplan_pathwayService } from '../interfaces/ICareplan_patwayService';
+import pathway_formtypesRepository from '../repositories/Pathway_formtypesRepository';
+import pathway_formtypesService from '../services/Pathway_formtypesService';
+import careplan_pathwayRepository from '../repositories/Careplan_pathwayRepository';
+import careplan_pathwayService from '../services/Careplan_pathwayService';
 // import QuestionnaireResponseService from '../services/QUestionnaireResponseServicevice';
 
 const iocContainer = new Container();
@@ -52,9 +56,9 @@ iocContainer.bind<ICarePlanRepository>(TYPES.CarePlanRepository).to(CareplanRepo
 iocContainer.bind<ICarePlanService>(TYPES.CarePlanService).to(CareplanService);
 iocContainer.bind<IFormtypesRepository>(TYPES.FormtypesRepository).to(Formtypes);
 iocContainer.bind<IFormtypesService>(TYPES.FormtypesService).to(formtypeService);
-iocContainer.bind<IPathway_formtypesRepository>(TYPES.Pathway_formtypesRepository)
-iocContainer.bind<IPathway_formtypesService>(TYPES.Pathway_formtypesService)
-iocContainer.bind<ICareplan_pathwayRepository>(TYPES.Careplan_pathwayRepository)
-iocContainer.bind<ICareplan_pathwayService>(TYPES.Careplan_pathwayService)
+iocContainer.bind<IPathway_formtypesRepository>(TYPES.Pathway_formtypesRepository).to(pathway_formtypesRepository);
+iocContainer.bind<IPathway_formtypesService>(TYPES.Pathway_formtypesService).to(pathway_formtypesService);
+iocContainer.bind<ICareplan_pathwayRepository>(TYPES.Careplan_pathwayRepository).to(careplan_pathwayRepository);
+iocContainer.bind<ICareplan_pathwayService>(TYPES.Careplan_pathwayService).to(careplan_pathwayService);
 
 export { iocContainer };
