@@ -3,7 +3,9 @@ import { InternalServerError } from "../errors/InternalServerError";
 import { IPathway_formtypesRepository } from "../interfaces/IPathway_formtypesRepository";
 import { formtypes_pathway } from "../types/Pathwayscenario";
 import { config } from "../config/env";
+import { injectable } from "inversify";
 
+@injectable()
 export default class pathway_formtypesRepository implements IPathway_formtypesRepository{
     async addPathway_formtypes(pathwayFormtype: formtypes_pathway): Promise<any> {
         try {

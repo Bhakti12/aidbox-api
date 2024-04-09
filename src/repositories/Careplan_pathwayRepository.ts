@@ -3,7 +3,9 @@ import { config } from "../config/env";
 import { InternalServerError } from "../errors/InternalServerError";
 import { ICareplan_pathwayRepository } from "../interfaces/ICareplan_pathwayRepository";
 import { careplan_pathway } from "../types/Pathwayscenario";
+import { injectable } from "inversify";
 
+@injectable()
 export default class careplan_pathwayRepository implements ICareplan_pathwayRepository{
     async addCareplan_pathway(careplanPathway: careplan_pathway): Promise<any> {
         try {

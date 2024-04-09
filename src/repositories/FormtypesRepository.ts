@@ -3,7 +3,9 @@ import { InternalServerError } from "../errors/InternalServerError";
 import { IFormtypesRepository } from "../interfaces/IFormtypesRepository";
 import { formtypesDetails } from "../types/Question";
 import { config } from "../config/env";
+import { injectable } from "inversify";
 
+@injectable()
 export default class Formtypes implements IFormtypesRepository{
     async addFormTypeData(formtype: formtypesDetails): Promise<any> {
         try {

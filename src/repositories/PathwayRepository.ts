@@ -3,7 +3,9 @@ import { InternalServerError } from "../errors/InternalServerError";
 import { IPathwayRepository } from "../interfaces/IPathwayRepository";
 import { pathwayDetails } from "../types/Question";
 import { config } from "../config/env";
+import { injectable } from "inversify";
 
+@injectable()
 export default class PathwayRepository implements IPathwayRepository {
   async addPathwayData(pathway: pathwayDetails): Promise<any> {
     try {

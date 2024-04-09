@@ -3,7 +3,9 @@ import { InternalServerError } from "../errors/InternalServerError";
 import { ICarePlanRepository } from "../interfaces/ICarePlanRepository";
 import { careplanDetails } from "../types/Question";
 import { config } from "../config/env";
+import { injectable } from "inversify";
 
+@injectable()
 export default class CareplanRepository implements ICarePlanRepository {
   async addCareplanData(careplan: careplanDetails): Promise<any> {
     try {

@@ -1,10 +1,11 @@
-import { inject } from "inversify";
+import { inject, injectable } from "inversify";
 import { IPathwayRepository } from "../interfaces/IPathwayRepository";
 import { IPathwayService } from "../interfaces/IPathwayService";
 import { pathwayDetails } from "../types/Question";
 import { TYPES } from "../config/types";
 import { InternalServerError } from "../errors/InternalServerError";
 
+@injectable()
 export default class pathwayService implements IPathwayService {
   private _pathwayRepo: IPathwayRepository;
 

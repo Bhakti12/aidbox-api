@@ -1,10 +1,11 @@
-import { inject } from "inversify";
+import { inject, injectable } from "inversify";
 import { IFormtypesRepository } from "../interfaces/IFormtypesRepository";
 import { IFormtypesService } from "../interfaces/IFormtypesService";
 import { formtypesDetails } from "../types/Question";
 import { TYPES } from "../config/types";
 import { InternalServerError } from "../errors/InternalServerError";
 
+@injectable()
 export default class formtypeService implements IFormtypesService {
   private _formtypesRepo: IFormtypesRepository;
 

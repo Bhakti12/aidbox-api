@@ -1,10 +1,11 @@
-import { inject } from "inversify";
+import { inject, injectable } from "inversify";
 import { TYPES } from "../config/types";
 import { ICarePlanRepository } from "../interfaces/ICarePlanRepository";
 import { ICarePlanService } from "../interfaces/ICarePlanService";
 import { careplanDetails } from "../types/Question";
 import { InternalServerError } from "../errors/InternalServerError";
 
+@injectable()
 export default class CareplanService implements ICarePlanService {
   private _careplanRepo: ICarePlanRepository;
 

@@ -1,4 +1,4 @@
-import { inject } from "inversify";
+import { inject, injectable } from "inversify";
 import { InternalServerError } from "../errors/InternalServerError";
 import { ICarePlanRepository } from "../interfaces/ICarePlanRepository";
 import { ICareplan_pathwayService } from "../interfaces/ICareplan_patwayService";
@@ -6,6 +6,7 @@ import { careplan_pathway } from "../types/Pathwayscenario";
 import { TYPES } from "../config/types";
 import { ICareplan_pathwayRepository } from "../interfaces/ICareplan_pathwayRepository";
 
+@injectable()
 export default class careplan_pathwayService
   implements ICareplan_pathwayService
 {
