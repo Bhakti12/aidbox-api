@@ -1,15 +1,18 @@
-import app from './src/config/express';
+import app from "./src/config/express";
 // import http from 'http';
-import {config} from './src/config/env';
-import routers from '../aidbox-api/src/routes/index';
+import { config } from "./src/config/env";
+import routers from "../aidbox-api/src/routes/index";
 
 // TODO:this is temporary ,after aws implementation please remove this
-const allowlist: any[string] =config.ALLOW_CORS_DOMAIN;
+const allowlist: any[string] = config.ALLOW_CORS_DOMAIN;
 app.get(`${config.API_ROOT}/static/:name`, (req, res) => {
-    let domains = JSON.parse(allowlist);
-    res.header('Content-Security-Policy', `frame-ancestors 'self' ${domains.join(' ')}`);
-    // console.log(res.header('Content-Security-Policy'));
-    res.sendFile(`./public/${req.params.name}`, { root: __dirname });
+  let domains = JSON.parse(allowlist);
+  res.header(
+    "Content-Security-Policy",
+    `frame-ancestors 'self' ${domains.join(" ")}`
+  );
+  // console.log(res.header('Content-Security-Policy'));
+  res.sendFile(`./public/${req.params.name}`, { root: __dirname });
 });
 
 // const loggerService = Container.get<ILoggerService>(TYPES.LoggerService);
@@ -17,13 +20,21 @@ app.get(`${config.API_ROOT}/static/:name`, (req, res) => {
 // create websocket connection
 // const server = http.createServer(app);
 
-
 // Start Express server
 app.listen(5001, function () {
-    console.log('server running at ',5001);
+  console.log("server running at ", 5001);
 });
 
-app.use(routers.questionnareRouter,routers.subscriptionRouter,routers.pathwayRouter);
+app.use(
+  routers.questionnareRouter,
+  routers.subscriptionRouter,
+  routers.pathwayRouter,
+  routers.careplanRouter,
+  routers.careplan_pathwayRouter,
+  routers.pathwayRouter,
+  routers.formtypesRouter,
+  routers.pathway_formtypesRouter
+);
 
 // Start websocket server
 // const io = new Server(server, {
