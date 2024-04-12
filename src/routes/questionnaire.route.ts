@@ -30,28 +30,10 @@ router.get("/share", (req: express.Request, res: express.Response) =>
 router.post("/new", (req: express.Request, res: express.Response) =>
   questionnaireController.makeCustomResource(req, res)
 );
-router.post("/addCareplan", (req: express.Request, res: express.Response) =>
-  questionnaireController.addCareplanData(req, res)
-);
-router.post("/addPathway", (req: express.Request, res: express.Response) =>
-  questionnaireController.addPathwayData(req, res)
-);
-router.post("/addFormTypes", (req: express.Request, res: express.Response) =>
-  questionnaireController.addFormTypesData(req, res)
-);
 router.put(
   "/updateQuestionnaireData",
   (req: express.Request, res: express.Response) =>
     questionnaireController.updateQuestionnaireData(req, res)
-);
-router.get("/getcareplans", (req: express.Request, res: express.Response) =>
-  questionnaireController.getCareplan(req, res)
-);
-router.get("/getpathway", (req: express.Request, res: express.Response) =>
-  questionnaireController.getPathway(req, res)
-);
-router.get("/getformtypes", (req: express.Request, res: express.Response) =>
-  questionnaireController.getFormtype(req, res)
 );
 router.get(
   "/getquestionnaireResponse",

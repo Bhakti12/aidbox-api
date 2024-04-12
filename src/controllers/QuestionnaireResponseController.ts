@@ -119,55 +119,6 @@ export default class QuestionnaireResponseController extends BaseController {
     }
   }
 
-  async addCareplanData(req: express.Request, res: express.Response) {
-    try {
-      const careplan: careplanDetails = {
-        resourceType: req.body.resourceType,
-        status: req.body.status,
-        intent: req.body.intent,
-        subject: req.body.subject,
-        title: req.body.title,
-        description: req.body.description,
-      };
-
-      const result = await this._questionService.addCareplanData(careplan);
-      return this.sendJSONResponse(res, "careplan added", { data: 1 }, result);
-    } catch (err: any) {
-      console.log("err", err);
-      return this.sendErrorResponse(req, res, err);
-    }
-  }
-
-  async addPathwayData(req: express.Request, res: express.Response) {
-    try {
-      const pathway: pathwayDetails = {
-        resourceType: req.body.resourceType,
-        status: req.body.status,
-        pathway_details: req.body.pathway_details,
-      };
-      const result = await this._questionService.addPathwayData(pathway);
-      return this.sendJSONResponse(res, "pathway added", { data: 1 }, result);
-    } catch (err: any) {
-      console.log("err", err);
-      return this.sendErrorResponse(req, res, err);
-    }
-  }
-
-  async addFormTypesData(req: express.Request, res: express.Response) {
-    try {
-      const formtype: formtypesDetails = {
-        resourceType: req.body.resourceType,
-        status: req.body.status,
-        formDetails: req.body.formDetails,
-      };
-      const result = await this._questionService.addFormTypeData(formtype);
-      return this.sendJSONResponse(res, "formtype added", { data: 1 }, result);
-    } catch (err: any) {
-      console.log("err", err);
-      return this.sendErrorResponse(req, res, err);
-    }
-  }
-
   async updateQuestionnaireData(req: express.Request, res: express.Response) {
     try {
       const question: questionnaireDetails = {
@@ -189,36 +140,6 @@ export default class QuestionnaireResponseController extends BaseController {
         { data: 1 },
         result
       );
-    } catch (err: any) {
-      console.log("err", err);
-      return this.sendErrorResponse(req, res, err);
-    }
-  }
-
-  async getCareplan(req: express.Request, res: express.Response) {
-    try {
-      const result = await this._questionService.getCareplan();
-      return this.sendJSONResponse(res, "careplan data", { data: 1 }, result);
-    } catch (err: any) {
-      console.log("err", err);
-      return this.sendErrorResponse(req, res, err);
-    }
-  }
-
-  async getPathway(req: express.Request, res: express.Response) {
-    try {
-      const result = await this._questionService.getPathway();
-      return this.sendJSONResponse(res, "pathway data", { data: 1 }, result);
-    } catch (err: any) {
-      console.log("err", err);
-      return this.sendErrorResponse(req, res, err);
-    }
-  }
-
-  async getFormtype(req: express.Request, res: express.Response) {
-    try {
-      const result = await this._questionService.getFormType();
-      return this.sendJSONResponse(res, "formTypes data", { data: 1 }, result);
     } catch (err: any) {
       console.log("err", err);
       return this.sendErrorResponse(req, res, err);

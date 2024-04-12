@@ -106,78 +106,10 @@ export default class QuestionnaireResponseService
       );
     }
   }
-  async addCareplanData(careplan: careplanDetails): Promise<any> {
-    try {
-      const result = await this._questionRepo.addCareplanData(careplan);
-      return result;
-    } catch (err: any) {
-      console.log("err", err);
-      throw new InternalServerError(
-        "An error occurred while interacting with the database"
-      );
-    }
-  }
-  async addFormTypeData(formtype: formtypesDetails): Promise<any> {
-    try {
-      const result = await this._questionRepo.addFormTypeData(formtype);
-      return result;
-    } catch (err: any) {
-      console.log("err", err);
-      throw new InternalServerError(
-        "An error occurred while interacting with the database"
-      );
-    }
-  }
-  async addPathwayData(pathway: pathwayDetails): Promise<any> {
-    try {
-      const result = await this._questionRepo.addPathwayData(pathway);
-      return result;
-    } catch (err: any) {
-      console.log("err", err);
-      throw new InternalServerError(
-        "An error occurred while interacting with the database"
-      );
-    }
-  }
+  
   async updateQuestionnaireData(question: questionnaireDetails): Promise<any> {
     try {
       const result = await this._questionRepo.updateQuestionnaireData(question);
-      return result;
-    } catch (err: any) {
-      console.log("err", err);
-      throw new InternalServerError(
-        "An error occurred while interacting with the database"
-      );
-    }
-  }
-
-  async getCareplan(): Promise<any> {
-    try {
-      const result = await this._questionRepo.getCareplan();
-      return result;
-    } catch (err: any) {
-      console.log("err", err);
-      throw new InternalServerError(
-        "An error occurred while interacting with the database"
-      );
-    }
-  }
-
-  async getPathway(): Promise<any> {
-    try {
-      const result = await this._questionRepo.getPathway();
-      return result;
-    } catch (err: any) {
-      console.log("err", err);
-      throw new InternalServerError(
-        "An error occurred while interacting with the database"
-      );
-    }
-  }
-
-  async getFormType(): Promise<any> {
-    try {
-      const result = await this._questionRepo.getFormType();
       return result;
     } catch (err: any) {
       console.log("err", err);

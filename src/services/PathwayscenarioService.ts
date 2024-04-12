@@ -14,32 +14,6 @@ export default class PathwayscenarioService implements IPathwayscenarioService {
   ) {
     this._pathwayRepo = pathwayRepo;
   }
-  async addPathway_formtypes(pathwayFormtype: formtypes_pathway): Promise<any> {
-    try {
-      const result = await this._pathwayRepo.addPathway_formtypes(
-        pathwayFormtype
-      );
-      return result;
-    } catch (err) {
-      console.log("err", err);
-      throw new InternalServerError(
-        "An error occurred while interacting with the database"
-      );
-    }
-  }
-  async addCareplan_pathway(careplanPathway: careplan_pathway): Promise<any> {
-    try {
-      const result = await this._pathwayRepo.addCareplan_pathway(
-        careplanPathway
-      );
-      return result;
-    } catch (err) {
-      console.log("err", err);
-      throw new InternalServerError(
-        "An error occurred while interacting with the database"
-      );
-    }
-  }
   async storeQuery(query: aidboxQuery,queryName:string): Promise<any> {
     try{
       const result = await this._pathwayRepo.storeQuery(query,queryName);

@@ -8,13 +8,7 @@ export interface IQuestionnaireResponseRepository{
     generateLink(formdetails: Parameters): Promise<any>;
     shareForm(url:string,outpath:string) : Promise<any>;
     makeCustomResource(resource:resourceInformation) : Promise<any>;
-    addCareplanData(careplanData:careplanDetails) : Promise<any>;
-    addFormTypeData(formType:formtypesDetails) : Promise<any>;
-    addPathwayData(pathway:pathwayDetails) : Promise<any>;
     updateQuestionnaireData(questionnaire:questionnaireDetails) : Promise<any>;
-    getCareplan(): Promise<any>;
-    getPathway(): Promise<any>;
-    getFormType(): Promise<any>;
     getQuestionnaireResponse(): Promise<any>;
     getPathwayOfCareplan(careplan_id: string): Promise<any>;
     getFormsOfPathway(pathway_id: string): Promise<any>;
