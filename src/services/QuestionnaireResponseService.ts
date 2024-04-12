@@ -26,7 +26,6 @@ import { createConfig } from "@aidbox/node-server-sdk";
 import { createHelpers } from "../config/helpers";
 import { request } from "express";
 const subscriptions = require("../config/subscription");
-const entities = require("../models/entities");
 
 @injectable()
 export default class QuestionnaireResponseService

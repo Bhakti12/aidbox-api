@@ -2,6 +2,7 @@ import app from "./src/config/express";
 // import http from 'http';
 import { config } from "./src/config/env";
 import routers from "../aidbox-api/src/routes/index";
+import mongoose from "mongoose";
 
 // TODO:this is temporary ,after aws implementation please remove this
 const allowlist: any[string] = config.ALLOW_CORS_DOMAIN;
@@ -15,6 +16,14 @@ app.get(`${config.API_ROOT}/static/:name`, (req, res) => {
   res.sendFile(`./public/${req.params.name}`, { root: __dirname });
 });
 
+mongoose
+  .connect("mongodb://0.0.0.0:27017/Aidbox_POC")
+  .then(() => {
+    console.log("Database Connected successfully");
+  })
+  .catch((err) => {
+    console.log("error in database", err);
+  });
 // const loggerService = Container.get<ILoggerService>(TYPES.LoggerService);
 
 // create websocket connection

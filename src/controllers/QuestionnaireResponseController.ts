@@ -22,7 +22,6 @@ import {
 } from "../types/Question";
 import { config } from "../config/env";
 const subscriptions = require("../config/subscription");
-const entities = require("../models/entities");
 
 export default class QuestionnaireResponseController extends BaseController {
   private _questionService: IQuestionnaireResponseService;

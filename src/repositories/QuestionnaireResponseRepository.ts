@@ -22,6 +22,7 @@ import { TOperation } from "../config/helpers";
 import { config } from "../config/env";
 import { application } from "express";
 import puppeteer from "puppeteer";
+const questionnaireResponseSchema = require("../models/questionnaireResponse.model");
 
 @injectable()
 export class QuestionnaireResponseRepository
@@ -56,6 +57,7 @@ export class QuestionnaireResponseRepository
     question: QuestionnaireResponse
   ): Promise<any> {
     try {
+      // console.log("question",question);
       const url = `${config.AIDBOX_URL}/QuestionnaireResponse`;
       const username = config.AIDBOX_CLIENT_ID;
       const password = config.AIDBOX_CLIENT_SECRET;
@@ -63,6 +65,14 @@ export class QuestionnaireResponseRepository
       const credentials = Buffer.from(`${username}:${password}`).toString(
         "base64"
       );
+
+      const store = await questionnaireResponseSchema.create({
+        status : question.status,
+        item : question.item,
+        url : question.questionnaire
+      });
+
+      console.log("store",store);
 
       const result = await axios.post(url, question, {
         headers: {
