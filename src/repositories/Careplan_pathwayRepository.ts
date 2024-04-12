@@ -4,6 +4,7 @@ import { InternalServerError } from "../errors/InternalServerError";
 import { ICareplan_pathwayRepository } from "../interfaces/ICareplan_pathwayRepository";
 import { careplan_pathway } from "../types/Pathwayscenario";
 import { injectable } from "inversify";
+const careplan_pathwaySchema = require("../models/careplan_pathway.model");
 
 @injectable()
 export default class careplan_pathwayRepository implements ICareplan_pathwayRepository{
@@ -17,6 +18,11 @@ export default class careplan_pathwayRepository implements ICareplan_pathwayRepo
             "base64"
           );
     
+          const storeCareplan_pathway = await careplan_pathwaySchema.create({
+            careplan_id : careplanPathway.careplan_id,
+            pathway_id : careplanPathway.pathway_id
+          });
+
           const result = await axios.post(url, careplanPathway, {
             headers: {
               Authorization: `Basic ${credentials}`,

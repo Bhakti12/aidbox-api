@@ -4,6 +4,7 @@ import { IPathway_formtypesRepository } from "../interfaces/IPathway_formtypesRe
 import { formtypes_pathway } from "../types/Pathwayscenario";
 import { config } from "../config/env";
 import { injectable } from "inversify";
+const formtypes_pathwaySchema = require("../models/formtypes_pathway.model");
 
 @injectable()
 export default class pathway_formtypesRepository implements IPathway_formtypesRepository{
@@ -16,7 +17,12 @@ export default class pathway_formtypesRepository implements IPathway_formtypesRe
           const credentials = Buffer.from(`${username}:${password}`).toString(
             "base64"
           );
-    
+          
+          const storePathway_formtype = await formtypes_pathwaySchema.create({
+            pathway_id : pathwayFormtype.pathway_id,
+            formtypes_id : pathwayFormtype.formtype_id
+          });
+
           const result = await axios.post(url, pathwayFormtype, {
             headers: {
               Authorization: `Basic ${credentials}`,

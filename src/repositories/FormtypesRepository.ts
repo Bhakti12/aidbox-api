@@ -4,6 +4,7 @@ import { IFormtypesRepository } from "../interfaces/IFormtypesRepository";
 import { formtypesDetails } from "../types/Question";
 import { config } from "../config/env";
 import { injectable } from "inversify";
+const formTypeSchema = require("../models/formtypes.model");
 
 @injectable()
 export default class Formtypes implements IFormtypesRepository{
@@ -17,6 +18,16 @@ export default class Formtypes implements IFormtypesRepository{
             "base64"
           );
     
+          const storeFormtypes = await formTypeSchema.create({
+            status : formtype.status,
+            form_name : formtype.formDetails.form_name,
+            form_code : formtype.formDetails.form_code,
+            description : formtype.formDetails.description,
+            form_fill_stage : formtype.formDetails.form_fill_stage,
+            form_filled_by : formtype.formDetails.form_filled_by,
+            form_accessed_by : formtype.formDetails.form_accessed_by
+          });
+
           const result = await axios.post(url, formtype, {
             headers: {
               Authorization: `Basic ${credentials}`,

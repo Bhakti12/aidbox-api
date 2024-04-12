@@ -8,6 +8,7 @@ import {
 } from "../types/Pathwayscenario";
 import { config } from "../config/env";
 import axios from "axios";
+const aidboxQuerySchema = require("../models/aidboxQuery.model");
 
 @injectable()
 export default class PathwayscenarioRepository
@@ -22,6 +23,11 @@ export default class PathwayscenarioRepository
       const credentials = Buffer.from(`${username}:${password}`).toString(
         "base64"
       );
+
+      const storeQuery = await aidboxQuerySchema.create({
+        params : query.params,
+        Query : query.query
+      });
 
       const result = await axios.put(url, query, {
         headers: {

@@ -4,6 +4,7 @@ import { IPathwayRepository } from "../interfaces/IPathwayRepository";
 import { pathwayDetails } from "../types/Question";
 import { config } from "../config/env";
 import { injectable } from "inversify";
+const pathwaySchema = require("../models/pathway.model");
 
 @injectable()
 export default class PathwayRepository implements IPathwayRepository {
@@ -16,6 +17,10 @@ export default class PathwayRepository implements IPathwayRepository {
       const credentials = Buffer.from(`${username}:${password}`).toString(
         "base64"
       );
+
+      const storePathway = await pathwaySchema.create({
+        pathway_details : pathway.pathway_details.pathway_name
+      });
 
       const result = await axios.post(url, pathway, {
         headers: {

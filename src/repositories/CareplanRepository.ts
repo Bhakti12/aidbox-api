@@ -4,6 +4,8 @@ import { ICarePlanRepository } from "../interfaces/ICarePlanRepository";
 import { careplanDetails } from "../types/Question";
 import { config } from "../config/env";
 import { injectable } from "inversify";
+import mongoose from "mongoose";
+const careplanSchema = require("../models/careplan.model");
 
 @injectable()
 export default class CareplanRepository implements ICarePlanRepository {
@@ -16,6 +18,14 @@ export default class CareplanRepository implements ICarePlanRepository {
       const credentials = Buffer.from(`${username}:${password}`).toString(
         "base64"
       );
+
+      const storeCareplan = await careplanSchema.create({
+        title : careplan.title,
+        intent : careplan.intent,
+        Status : careplan.status,
+        Subject : careplan.subject,
+        description : careplan.description
+      });
 
       const result = await axios.post(url, careplan, {
         headers: {
