@@ -19,6 +19,7 @@ export default class TransferResourceDataService
   async mapData(questionnaireData: any): Promise<any> {
     try {
       const careplan_map : any = {
+        resourceType : "careplan",
         title : questionnaireData.item[0].item[0].answer[0].value.string,
         intent : questionnaireData.item.find(item=>item.text='Intent').answer[0].value.Coding.display,
         status : questionnaireData.item.find(item => item.text === 'Status').answer[0].value.Coding.display,
