@@ -14,5 +14,7 @@ export const TYPES = {
     FormtypesService: Symbol('IFormtypeService'),
     PathwayService: Symbol('IPathwayService'),
     Careplan_pathwayService: Symbol('ICareplan_pathwayService'),
-    Pathway_formtypesService: Symbol('IPathway_formtypesService')
+    Pathway_formtypesService: Symbol('IPathway_formtypesService'),
+    TransferResourceDataRepository: Symbol('ITransferResourceDataRepository'),
+    TransferResourceDataService: Symbol('ITransferResourceDataService')
 };

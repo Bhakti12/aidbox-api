@@ -36,6 +36,10 @@ import pathway_formtypesRepository from '../repositories/Pathway_formtypesReposi
 import pathway_formtypesService from '../services/Pathway_formtypesService';
 import careplan_pathwayRepository from '../repositories/Careplan_pathwayRepository';
 import careplan_pathwayService from '../services/Careplan_pathwayService';
+import { ITransferResourceDataRepository } from '../interfaces/ITransferResourceDataRepository';
+import TransferResourceDataRepository from '../repositories/transferResourceDataRepository';
+import { ITransferResourceDataService } from '../interfaces/ITransferResourceDataService';
+import TransferResourceDataService from '../services/transferResourceDataService';
 // import QuestionnaireResponseService from '../services/QUestionnaireResponseServicevice';
 
 const iocContainer = new Container();
@@ -60,5 +64,7 @@ iocContainer.bind<IPathway_formtypesRepository>(TYPES.Pathway_formtypesRepositor
 iocContainer.bind<IPathway_formtypesService>(TYPES.Pathway_formtypesService).to(pathway_formtypesService);
 iocContainer.bind<ICareplan_pathwayRepository>(TYPES.Careplan_pathwayRepository).to(careplan_pathwayRepository);
 iocContainer.bind<ICareplan_pathwayService>(TYPES.Careplan_pathwayService).to(careplan_pathwayService);
+iocContainer.bind<ITransferResourceDataRepository>(TYPES.TransferResourceDataRepository).to(TransferResourceDataRepository);
+iocContainer.bind<ITransferResourceDataService>(TYPES.TransferResourceDataService).to(TransferResourceDataService);
 
 export { iocContainer };
