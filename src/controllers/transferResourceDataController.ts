@@ -12,6 +12,16 @@ export default class transferResourceDataController extends BaseController {
 
   async mapData(req: express.Request, res: express.Response) {
     try {
-    } catch (err: any) {}
+      const questionnaireData: any = req.body.questionnaireData;
+      const convertData = await this._mapService.mapData(questionnaireData);
+      return this.sendJSONResponse(
+        res,
+        "careplan is added",
+        { data: 1 },
+        convertData
+      );
+    } catch (err: any) {
+      return this.sendErrorResponse(req, res, err);
+    }
   }
 }
