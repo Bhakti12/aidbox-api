@@ -18,17 +18,19 @@ export default class TransferResourceDataService
   }
   async mapData(questionnaireData: any): Promise<any> {
     try {
+      console.log("questionnaire data",questionnaireData.item.find(item=>item.text='Instant'));
       const careplan_map : any = {
         resourceType : "careplan",
         title : questionnaireData.item[0].item[0].answer[0].value.string,
-        intent : questionnaireData.item.find(item=>item.text='Intent').answer[0].value.Coding.display,
-        status : questionnaireData.item.find(item => item.text === 'Status').answer[0].value.Coding.display,
+        intent : "proposal",
+        status : questionnaireData.status,
+        subject : questionnaireData.subject,
         description : questionnaireData.item[0].item[1].answer[0].value.string
       };
       const result = await this._mapRepo.mapData(careplan_map);
       return result;
     } catch (err: any) {
-      console.log("err", err.response.data);
+      console.log("err", err);
       throw new InternalServerError(
         "An error occurred while interacting with the database"
       );

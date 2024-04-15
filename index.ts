@@ -42,7 +42,8 @@ app.use(
   routers.careplan_pathwayRouter,
   routers.pathwayRouter,
   routers.formtypesRouter,
-  routers.pathway_formtypesRouter
+  routers.pathway_formtypesRouter,
+  routers.transferResourcedatacontrolRouter
 );
 
 // Start websocket server

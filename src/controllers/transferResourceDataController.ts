@@ -12,7 +12,8 @@ export default class transferResourceDataController extends BaseController {
 
   async mapData(req: express.Request, res: express.Response) {
     try {
-      const questionnaireData: any = req.body.questionnaireData;
+      const questionnaireResponseId = req.params.id;
+      const questionnaireData: any = req.body;
       const convertData = await this._mapService.mapData(questionnaireData);
       return this.sendJSONResponse(
         res,

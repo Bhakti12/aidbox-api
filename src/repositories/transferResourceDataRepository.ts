@@ -2,13 +2,15 @@ import axios from "axios";
 import { config } from "../config/env";
 import { InternalServerError } from "../errors/InternalServerError";
 import { ITransferResourceDataRepository } from "../interfaces/ITransferResourceDataRepository";
+import { injectable } from "inversify";
 
+@injectable()
 export default class TransferResourceDataRepository
   implements ITransferResourceDataRepository
 {
   async mapData(questionnaireData: any): Promise<any> {
     try {
-        const url = `${config.AIDBOX_URL}/careplan`;
+        const url = `${config.AIDBOX_URL}/CarePlan`;
       const username = config.AIDBOX_CLIENT_ID;
       const password = config.AIDBOX_CLIENT_SECRET;
       const credentials = Buffer.from(`${username}:${password}`).toString(

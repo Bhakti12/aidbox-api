@@ -16,3 +16,5 @@ const subscriptionController = new transferResourceDataController(
 router.post("/map-data", (req: express.Request, res: express.Response) =>
   subscriptionController.mapData(req, res)
 );
+
+export default router;
