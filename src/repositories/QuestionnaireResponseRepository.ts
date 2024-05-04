@@ -109,6 +109,7 @@ export class QuestionnaireResponseRepository
 
   async generateLink(formdetails: Parameters): Promise<any> {
     try {
+      console.log("abc");
       const url = `${config.AIDBOX_URL}/Questionnaire/${formdetails.parameter[0].valueReference?.id}/$populatelink`;
       const username = config.AIDBOX_CLIENT_ID;
       const password = config.AIDBOX_CLIENT_SECRET;
